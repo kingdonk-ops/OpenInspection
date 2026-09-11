@@ -25,6 +25,7 @@ deferred.
 |---|---|
 | [`quickstart.md`](quickstart.md) | Empty Cloudflare account to a workspace you can log into, in about 20 minutes |
 | [`operate/deploy.md`](operate/deploy.md) | First-time production deploy — one-click, CLI, and what gets provisioned |
+| [`operate/coolify.md`](operate/coolify.md) | Deploying on Coolify or any Docker host — no Cloudflare account required |
 | [`operate/upgrade.md`](operate/upgrade.md) | Move an existing deployment to a newer release (forward-only) — including the one-time reconcile a rebuilt baseline needs |
 | [`operate/sms-compliance.md`](operate/sms-compliance.md) | Privacy/Terms pages, carrier registration, TCPA/CTIA wording |
 | [`operate/rotate-jwt-keyring.md`](operate/rotate-jwt-keyring.md) | Rotating the ES256 JWT keyring without invalidating live sessions |

@@ -1,0 +1,46 @@
+services:
+  openinspection:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8787}:8787"
+    volumes:
+      - openinspection_data:/data
+    environment:
+      # Required — set these in Coolify before first boot
+      APP_BASE_URL: ${APP_BASE_URL:-http://localhost:8787}
+      SETUP_CODE: ${SETUP_CODE:-change-me}
+
+      # JWT — generated automatically on first boot and persisted to /data
+      # if not provided; copy the generated values into Coolify env vars so
+      # they survive container rebuilds.
+      JWT_CURRENT_KID: ${JWT_CURRENT_KID:-v1}
+      JWT_SECRET: ${JWT_SECRET:-}
+      JWT_PRIVATE_KEY_V1: ${JWT_PRIVATE_KEY_V1:-}
+      JWT_PUBLIC_KEY_V1: ${JWT_PUBLIC_KEY_V1:-}
+
+      # Optional integrations
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      SENDER_EMAIL: ${SENDER_EMAIL:-}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-}
+      STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET:-}
+      TURNSTILE_SECRET_KEY: ${TURNSTILE_SECRET_KEY:-}
+      TURNSTILE_SITE_KEY: ${TURNSTILE_SITE_KEY:-1x00000000000000000000AA}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GOOGLE_PLACES_API_KEY: ${GOOGLE_PLACES_API_KEY:-}
+      ESTATED_API_KEY: ${ESTATED_API_KEY:-}
+      QBO_CLIENT_ID: ${QBO_CLIENT_ID:-}
+      QBO_CLIENT_SECRET: ${QBO_CLIENT_SECRET:-}
+      QBO_ENV: ${QBO_ENV:-sandbox}
+
+      # AI (bring-your-own — configure per workspace in Settings → Advanced → AI)
+      AI_BASE_URL: ${AI_BASE_URL:-}
+      AI_MODEL: ${AI_MODEL:-}
+
+      # Branding
+      APP_NAME: ${APP_NAME:-}
+      PRIMARY_COLOR: ${PRIMARY_COLOR:-}
+
+volumes:
+  openinspection_data:
